@@ -1,0 +1,47 @@
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="fragments/header :: header"/>-->
+<!--<style>-->
+<!--    .fieldError {-->
+<!--        border-color: #bd2130;-->
+<!--    }-->
+<!--</style>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <div th:replace="fragments/bodyHeader :: bodyHeader"/>-->
+<!--    들어옴-->
+<!--&lt;!&ndash;    <form role="form" action="/member/signup" th:object="${memberDto}" method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;       ${~~} : controller에서 넘어온 오브젝트 값에 접근하는 명령어&ndash;&gt;-->
+<!--&lt;!&ndash;                   *{~~} : 해당 오브젝트의 필드값에 접근하는 명령어&ndash;&gt;-->
+<!--&lt;!&ndash;        &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label th:for="name">이름</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력하세요"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash;                   th:class="${#fields.hasErrors('name')}? 'form-controlfieldError' : 'form-control'">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <p th:if="${#fields.hasErrors('name')}"&ndash;&gt;-->
+<!--&lt;!&ndash;               th:errors="*{name}">Incorrect date</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label th:for="address">도시</label>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <input type="text" th:field="*{address.city}" class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                   placeholder="도시를 입력하세요"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <p th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}">Incorrect date</p>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label th:for="address">거리</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" th:field="*{address.street}" class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                   placeholder="거리를 입력하세요"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label th:for="address">우편번호</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="text" th:field="*{address.zipCode}" class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                   placeholder="우편번호를 입력하세요"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <button type="submit" class="btn btn-primary">Submit</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+<!--&lt;!&ndash;    <br/>&ndash;&gt;-->
+<!--    <div th:replace="fragments/footer :: footer"/>-->
+<!--</div> &lt;!&ndash; /container &ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
