@@ -44,7 +44,6 @@ public class FrontControllerServletV1 extends HttpServlet {
             resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
-        log.info("request controller : {} ", controllerV1.toString());
         // controller 호출
         controllerV1.process(req, resp);
     }

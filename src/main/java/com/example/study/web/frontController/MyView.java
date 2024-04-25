@@ -1,4 +1,4 @@
-package com.example.study.web.frontController.myView;
+package com.example.study.web.frontController;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

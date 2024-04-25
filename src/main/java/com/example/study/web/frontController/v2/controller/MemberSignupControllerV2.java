@@ -4,9 +4,8 @@ import com.example.study.domain.Address;
 import com.example.study.domain.Member;
 import com.example.study.dto.MemberSignUpRequestDto;
 import com.example.study.service.MemberService;
-import com.example.study.web.frontController.myView.MyView;
+import com.example.study.web.frontController.MyView;
 import com.example.study.web.frontController.v2.ControllerV2;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -37,8 +36,6 @@ public class MemberSignupControllerV2 implements ControllerV2 {
 
         //view 에 보낼 model 객체에 데이터를 set한다.
         req.setAttribute("member", byId);
-
-
         MyView myView = new MyView("/signupProc");
 
         return myView;
