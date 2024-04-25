@@ -36,9 +36,7 @@ public class FrontControllerServletV1 extends HttpServlet {
     @Override
     // 요청 controller를 식별하기 위한 DispatcherServlet(FrontControlle）의 비지니스 로직을 수행할 @Service 영역이다.
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        log.info("FrontControllerServletV1 service");
         String requestURI = req.getRequestURI();
-        log.info("requestURI: {}", requestURI);
         //다형성을 통해 인터페이스로 요청에 따른 Controller를 식별
         //ControllerV1 controllerV1 = new new MemberSignupProcControllerV1();
         ControllerV1 controllerV1 = controllerMapV1.get(requestURI);
