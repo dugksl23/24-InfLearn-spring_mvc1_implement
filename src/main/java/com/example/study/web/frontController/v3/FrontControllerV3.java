@@ -22,8 +22,6 @@ import java.util.Map;
 
 
 @WebServlet(name = "frontControllerServletV3", urlPatterns = "/front-controller/v3/*")
-//@Controller
-//@RequestMapping("/front-controller/v3/*")
 @Slf4j
 public class FrontControllerV3 extends HttpServlet {
 
@@ -56,6 +54,7 @@ public class FrontControllerV3 extends HttpServlet {
 
         // 3. 해당 컨틀롤러에서 비지니스 로직 수행 및 논리 뷰를 dispatcher에게 modelView 반환
         //    -> 논리뷰의 이름을 생성자 주입으로 객체러 생송된 ModelView를 반환한다.
+        //    -> 각각의 컨트롤러에서는 HttpServlet 종속성을 제거.
         ModelView mv = controllerV3.process(paramMap);
         //   인자로 논리뷰 이름과 requestParam (model)이 있다.
         log.info("3. 해당 컨틀롤러에서 비지니스 로직 수행 및 논리 뷰를 dispatcher에게 modelView 반환");
@@ -88,16 +87,7 @@ public class FrontControllerV3 extends HttpServlet {
                     });
 
         }
-//        String memberName = req.getParameter("memberName");
-//        String city = req.getParameter("city");
-//        String street = req.getParameter("street");
-//        String zipcode = req.getParameter("zipcode");
-//
-//
-//        paramMap.put(memberName, "memberName");
-//        paramMap.put(city, "city");
-//        paramMap.put(street, "street");
-//        paramMap.put(zipcode, "zipcode");
+
         return paramMap;
     }
 
