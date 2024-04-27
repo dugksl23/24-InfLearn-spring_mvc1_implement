@@ -8,7 +8,7 @@ import java.util.Map;
 public class MemberSignupProcControllerV3 implements ControllerV3 {
     @Override
     public ModelView process(Map<String, String> modelAttribute) {
-        ModelView modelView = new ModelView("signupProc");
+        ModelView modelView = new ModelView("signup");
         return modelView;
     }
 }

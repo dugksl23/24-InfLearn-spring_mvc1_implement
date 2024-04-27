@@ -1,7 +1,12 @@
 spring:
-  thymeleaf:
-    prefix: /resources/templates/
-    suffix: .html
+  mvc:
+    view:
+      prefix: classpath:/templates/
+      suffix: .html
+#
+#  thymeleaf:
+#    prefix: /resources/templates/
+#    suffix: .html
 
   datasource:
     url: jdbc:h2:mem:test
