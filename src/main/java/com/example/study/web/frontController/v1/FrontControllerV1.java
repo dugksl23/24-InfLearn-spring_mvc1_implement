@@ -16,12 +16,12 @@ import java.util.Map;
 @Slf4j
 @WebServlet(name = "frontControllerServletV1", urlPatterns = "/front-controller/v1/*")
 // 1. /*는 /v1 밑에 어떤 경로로 들어오든 FrontControllerServletV1(서블렛)이 호출되게끔 되어있다.
-public class FrontControllerServletV1 extends HttpServlet {
+public class FrontControllerV1 extends HttpServlet {
 
     //2. 어떤 요청 컨트롤러로 들어왔는지 URL을 통해 식별
     private Map<String, ControllerV1> controllerMapV1 = new HashMap<>();
 
-    public FrontControllerServletV1() {
+    public FrontControllerV1() {
         //3. 생성자 주입을 통한 객체 생성 시점에
         //   3-1. 하위 컨트롤러 서블렛의 모든 URL을 등록
         //   3-2. 해당 컨트롤러를 호출 및 반환

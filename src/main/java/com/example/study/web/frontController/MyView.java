@@ -26,6 +26,8 @@ public class MyView {
 
     }
 
+
+    //v4
     public void render(Map<String, Object> model, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         modelToReqSetAttribute(model, req);

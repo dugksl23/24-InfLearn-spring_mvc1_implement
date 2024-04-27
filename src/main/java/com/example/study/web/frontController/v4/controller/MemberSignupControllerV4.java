@@ -1,11 +1,10 @@
-package com.example.study.web.v4.controller;
+package com.example.study.web.frontController.v4.controller;
 
 import com.example.study.domain.Address;
 import com.example.study.domain.Member;
 import com.example.study.dto.MemberSignUpRequestDto;
 import com.example.study.service.MemberService;
-import com.example.study.web.frontController.ModelView;
-import com.example.study.web.v4.ControllerV4;
+import com.example.study.web.frontController.v4.ControllerV4;
 
 import java.util.Map;
 
@@ -32,7 +31,7 @@ public class MemberSignupControllerV4 implements ControllerV4 {
             Long save = memberService.save(member);
             member = memberService.findById(save);
         }
-        
+
         //web 계층에서 전달된 파라미터들을 model 객체에 담아서 보낸다.
         model.put("member", member);
 

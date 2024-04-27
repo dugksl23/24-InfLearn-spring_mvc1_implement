@@ -1,12 +1,11 @@
-package com.example.study.web.v4;
+package com.example.study.web.frontController.v4;
 
 
 import com.example.study.web.frontController.ModelView;
 import com.example.study.web.frontController.MyView;
-import com.example.study.web.frontController.v3.ControllerV3;
-import com.example.study.web.v4.controller.MemberListControllerV4;
-import com.example.study.web.v4.controller.MemberSignupControllerV4;
-import com.example.study.web.v4.controller.MemberSignupProcControllerV4;
+import com.example.study.web.frontController.v4.controller.MemberListControllerV4;
+import com.example.study.web.frontController.v4.controller.MemberSignupControllerV4;
+import com.example.study.web.frontController.v4.controller.MemberSignupProcControllerV4;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,7 +19,7 @@ import java.util.Map;
 
 @WebServlet(name = "frontControllerServletV4", urlPatterns = "/front-controller/v4/*")
 @Slf4j
-public class FrontController extends HttpServlet {
+public class FrontControllerV4 extends HttpServlet {
 
     private Map<String, ControllerV4> controllerMapV4 = new HashMap<>();
 
@@ -48,7 +47,7 @@ public class FrontController extends HttpServlet {
         // 2. 해당 Controller 에 request Param 데이터 넘기기.
         log.info("2. 해당 Controller 에 request Param 데이터 넘기기.");
         Map<String, String> paramMap = createParamMap(req);
-        //3. model 객체 생성 및 컨트롤러에 넘기기.
+        //3. model 객체 생성 및 컨트롤러에 넘기기. (얕은 복사)
         Map<String, Object> model = new HashMap<>();
         log.info("model 객체 생성");
 

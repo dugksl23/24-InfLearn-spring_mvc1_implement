@@ -1,9 +1,8 @@
-package com.example.study.web.v4.controller;
+package com.example.study.web.frontController.v4.controller;
 
 import com.example.study.domain.Member;
 import com.example.study.service.MemberService;
-import com.example.study.web.frontController.ModelView;
-import com.example.study.web.v4.ControllerV4;
+import com.example.study.web.frontController.v4.ControllerV4;
 
 import java.util.List;
 import java.util.Map;
