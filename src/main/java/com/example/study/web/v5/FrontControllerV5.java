@@ -1,9 +1,14 @@
 package com.example.study.web.v5;
 
+import com.example.study.web.frontController.ModelView;
 import com.example.study.web.frontController.MyView;
+import com.example.study.web.frontController.v3.controller.MemberListControllerV3;
+import com.example.study.web.frontController.v3.controller.MemberSignupControllerV3;
+import com.example.study.web.frontController.v3.controller.MemberSignupProcControllerV3;
 import com.example.study.web.frontController.v4.controller.MemberListControllerV4;
 import com.example.study.web.frontController.v4.controller.MemberSignupControllerV4;
 import com.example.study.web.frontController.v4.controller.MemberSignupProcControllerV4;
+import com.example.study.web.v5.adapter.ControllerV3HandlerAdapter;
 import com.example.study.web.v5.adapter.ControllerV4HandlerAdapter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,9 +36,8 @@ public class FrontControllerV5 extends HttpServlet {
     private final List<MyHandlerAdapter> myHandlerAdapterList = new ArrayList<>();
 
     public FrontControllerV5() {
-        String absolutePath = "/front-controller/v5/v3/member/";
         //1. ComponentScan으로 모든 컨트롤러 정보를 HandlerMapping Map에 담는다.
-        initHandlerMappingMap(absolutePath);
+        initHandlerMappingMap();
         // 2. 핸들러 어탑터 목록 조회
         //    - 요청 URL 에 맞는 Controller.process(requestParam, model)
         //      을 handle 하는 HandlerAdopter를 반환.
@@ -41,14 +45,20 @@ public class FrontControllerV5 extends HttpServlet {
 
     }
 
-    private void initHandlerMappingMap(String absolutePath) {
-        handlerMapping.put(absolutePath + "signup", new MemberSignupControllerV4());
-        handlerMapping.put(absolutePath + "memberList", new MemberListControllerV4());
-        handlerMapping.put(absolutePath + "signupProc", new MemberSignupProcControllerV4());
+    private void initHandlerMappingMap() {
+        //v4
+        handlerMapping.put("/front-controller/v5/v4/member/signup", new MemberSignupControllerV4());
+        handlerMapping.put("/front-controller/v5/v4/member/memberList", new MemberListControllerV4());
+        handlerMapping.put("/front-controller/v5/v4/member/signupProc", new MemberSignupProcControllerV4());
+
+        handlerMapping.put("/front-controller/v5/v3/member/signup", new MemberSignupControllerV3());
+        handlerMapping.put("/front-controller/v5/v3/member/memberList", new MemberListControllerV3());
+        handlerMapping.put("/front-controller/v5/v3/member/signupProc", new MemberSignupProcControllerV3());
     }
 
     private void initHandlerAdopterList() {
         myHandlerAdapterList.add(new ControllerV4HandlerAdapter());
+        myHandlerAdapterList.add(new ControllerV3HandlerAdapter());
     }
 
     @Override
@@ -83,7 +93,8 @@ public class FrontControllerV5 extends HttpServlet {
         log.info("3. model 객체 생성 및 handlerAdapter 의 handle(model, req, resp, handler) 함수 실행");
         log.info("3-1. handlerAdapter : 구현체 컨트롤러의 인터페이스(ControllerV4)의 핸들러 어탑터의 인터페이스");
         log.info("3-2. object : 구현체 컨트롤러(memberSignupProcV4)");
-        String viewName = handlerAdapter.handle(req, resp, handler, model);
+        ModelView handle = handlerAdapter.handle(req, handler, model);
+        String viewName = handle.getViewName();
         log.info("5. 구현체 컨트롤러에서 handler에게 논리뷰 String 반환");
 
 
@@ -118,9 +129,11 @@ public class FrontControllerV5 extends HttpServlet {
          * @return true/false
          * true 일경우, HandlerAdapter의 인터페이스를 (V4 Adapter의 구현 class 의 interface) 로 반환받는다.
          */
+
+        log.info("2-1. HandlerAdapter.support(object/구현체 클래스) 함수를 실행 ");
+        log.info("2-2. support() 함수를 통한 요청 요청 구현 클래스와 부모 인터페이스 일치 여부 확인 중");
+//        myHandlerAdapterList.stream().filter(handlerAdapter -> handlerAdapter.support(handler)).findFirst();
         for (MyHandlerAdapter handlerAdapter : myHandlerAdapterList) {
-            log.info("2-1. HandlerAdapter.support(object/구현체 클래스) 함수를 실행 ");
-            log.info("2-2. support() 함수를 통한 요청 요청 구현 클래스와 부모 인터페이스 일치 여부 확인 중");
             if (handlerAdapter.support(handler)) {
                 log.info("2-3. ControllerV4(인터페이스) 일치 여부, {}", handlerAdapter.support(handler));
                 log.info("2-4. ControllerV4Handler(구현체)의 참조값을 가진, MyHandlerAdapter(핸들러 어답터 인터페이스/구현체의 참조값을 가짐) 반환 :, {}",  handlerAdapter.getClass().getName());

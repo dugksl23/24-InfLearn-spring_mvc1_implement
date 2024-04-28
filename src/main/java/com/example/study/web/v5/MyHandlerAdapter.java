@@ -14,5 +14,5 @@ import java.util.Map;
 public interface MyHandlerAdapter {
 
     boolean support (Object handler);
-    String handle(HttpServletRequest request, HttpServletResponse response, Object handler, Map<String, Object> model) throws ServletException, IOException;
+    ModelView handle(HttpServletRequest request, Object handler, Map<String, Object> model) throws ServletException, IOException;
 }

@@ -49,7 +49,7 @@ public class FrontControllerV3 extends HttpServlet {
         }
 
         // 2. 해당 Controller 에 request Param 데이터 넘기기.
-        log.info("2. 해당 Controller 에 request Param 데이터 넘기기.");
+        log.info("2. 해당 Controller 에 request Param 데이터 넘기기. -> request 된 데이터 Object(객체 매핑)");
         Map<String, String> paramMap = createParamMap(req);
 
         // 3. 해당 컨틀롤러에서 비지니스 로직 수행 및 논리 뷰를 dispatcher에게 modelView 반환

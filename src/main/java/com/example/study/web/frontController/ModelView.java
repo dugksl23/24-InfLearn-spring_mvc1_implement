@@ -17,7 +17,6 @@ public class ModelView {
 
     // 논리뷰
     private String viewName;
-    // web 계층에서 request, response용 데이터
     private Map<String, Object> model = new HashMap<>();
 
     //객체 생성시 생성자의 매개변수로 논리 뷰 이름전달.
