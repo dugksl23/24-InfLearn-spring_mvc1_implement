@@ -1,4 +1,4 @@
-package com.example.study.web.v5;
+package com.example.study.web.frontController.v5;
 
 import com.example.study.web.frontController.ModelView;
 import jakarta.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.example.study.web.v5;
+package com.example.study.web.frontController.v5;
 
 import com.example.study.web.frontController.ModelView;
 import com.example.study.web.frontController.MyView;
@@ -8,8 +8,8 @@ import com.example.study.web.frontController.v3.controller.MemberSignupProcContr
 import com.example.study.web.frontController.v4.controller.MemberListControllerV4;
 import com.example.study.web.frontController.v4.controller.MemberSignupControllerV4;
 import com.example.study.web.frontController.v4.controller.MemberSignupProcControllerV4;
-import com.example.study.web.v5.adapter.ControllerV3HandlerAdapter;
-import com.example.study.web.v5.adapter.ControllerV4HandlerAdapter;
+import com.example.study.web.frontController.v5.adapter.ControllerV3HandlerAdapter;
+import com.example.study.web.frontController.v5.adapter.ControllerV4HandlerAdapter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -93,8 +93,8 @@ public class FrontControllerV5 extends HttpServlet {
         log.info("3. model 객체 생성 및 handlerAdapter 의 handle(model, req, resp, handler) 함수 실행");
         log.info("3-1. handlerAdapter : 구현체 컨트롤러의 인터페이스(ControllerV4)의 핸들러 어탑터의 인터페이스");
         log.info("3-2. object : 구현체 컨트롤러(memberSignupProcV4)");
-        ModelView handle = handlerAdapter.handle(req, handler, model);
-        String viewName = handle.getViewName();
+        ModelView modelAndView = handlerAdapter.handle(req, handler, model);
+        String viewName = modelAndView.getViewName();
         log.info("5. 구현체 컨트롤러에서 handler에게 논리뷰 String 반환");
 
 
@@ -102,9 +102,10 @@ public class FrontControllerV5 extends HttpServlet {
         MyView myView = viewResolver(viewName);
         log.info("6. viewResolver 호출 및 myview 객체 생성");
 
-        //5. 뷰객체를 통한 render() -> html　페이지를 렌더하고 client에게 반환
+        //5. 뷰객체에 model을 담고 render() 호출
+        // -> html　페이지를 렌더하고 client에게 반환
         log.info("7. my view 반환 및 render() 실행");
-        myView.render(req, resp);
+        myView.render(req, resp, modelAndView.getModel());
 
     }
 

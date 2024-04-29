@@ -1,12 +1,10 @@
-package com.example.study.web.v5.adapter;
+package com.example.study.web.frontController.v5.adapter;
 
 import com.example.study.web.frontController.ModelView;
 import com.example.study.web.frontController.v3.ControllerV3;
-import com.example.study.web.v5.MyHandlerAdapter;
+import com.example.study.web.frontController.v5.MyHandlerAdapter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import org.hibernate.query.NativeQuery;
 
 import java.io.IOException;
 import java.util.HashMap;

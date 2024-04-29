@@ -1,11 +1,10 @@
-package com.example.study.web.v5.adapter;
+package com.example.study.web.frontController.v5.adapter;
 
 import com.example.study.web.frontController.ModelView;
 import com.example.study.web.frontController.v4.ControllerV4;
-import com.example.study.web.v5.MyHandlerAdapter;
+import com.example.study.web.frontController.v5.MyHandlerAdapter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;

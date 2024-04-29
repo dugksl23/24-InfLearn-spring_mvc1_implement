@@ -18,8 +18,16 @@ public class MemberSignupControllerV4 implements ControllerV4 {
         // 받는 곳에서는 인터페이스를 통해 <String, object>로 받고
         // 그것을 상속하는 곳에서 타입을 특정하면 된다.
 
-        Member member = null;
+        Member member = new Member();
+        member = getMember(paramMap, member, memberService);
+        //web 계층에서 전달된 파라미터들을 model 객체에 담아서 보낸다.
+        model.put("member", member);
 
+        return "memberList";
+
+    }
+
+    public static Member getMember(Map<String, String> paramMap, Member member, MemberService memberService) {
         if (!paramMap.isEmpty()) {
             String memberName = paramMap.get("memberName");
             String city = paramMap.get("city");
@@ -31,11 +39,6 @@ public class MemberSignupControllerV4 implements ControllerV4 {
             Long save = memberService.save(member);
             member = memberService.findById(save);
         }
-
-        //web 계층에서 전달된 파라미터들을 model 객체에 담아서 보낸다.
-        model.put("member", member);
-
-        return "memberList";
-
+        return member;
     }
 }
